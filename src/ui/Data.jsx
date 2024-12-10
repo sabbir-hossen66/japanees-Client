@@ -39,3 +39,9 @@ export const littleCard = [
   { title: "日本の季節", icon: "🌸", description: "Understand the seasons in Japan." },
   { title: "アートと音楽", icon: "🎶", description: "Explore Japanese art and music." },
 ];
+
+export const stats = [
+  { label: "Transactions every 24 hours", value: "44 million" },
+  { label: "Assets under holding", value: "$119 trillion" },
+  { label: "New users annually", value: "46,000" },
+];

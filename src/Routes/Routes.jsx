@@ -4,6 +4,7 @@ import {
 import Root from "../Layout/Root";
 import ErrorPage from "../Shared/ErrorPage";
 import LandingPage from "../Pages/LandingPage/LandingPage";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
         path: "/",
         element: <LandingPage />,
       },
+      {
+        path: "/about",
+        element: <AboutUs />
+      }
     ],
   },
 ]);

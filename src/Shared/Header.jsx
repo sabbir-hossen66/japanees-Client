@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,30 +20,30 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            <a
-              href="#home"
+            <Link
+              to="/"
               className="text-white hover:text-gray-300 text-lg transition-all duration-300"
             >
               Home
-            </a>
-            <a
-              href="#features"
+            </Link>
+            <Link
+              to="#features"
               className="text-white hover:text-gray-300 text-lg transition-all duration-300"
             >
               Features
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              to="/about"
               className="text-white hover:text-gray-300 text-lg transition-all duration-300"
             >
-              Contact
-            </a>
-            <a
-              href="#dashboard"
+              AboutUs
+            </Link>
+            <Link
+              to="#dashboard"
               className="text-white hover:text-gray-300 text-lg transition-all duration-300"
             >
               Dashboard
-            </a>
+            </Link>
             <div className="flex space-x-4">
               {isLoggedIn ? (
                 // Show "Register" button if the user is logged in
@@ -109,26 +110,26 @@ const Header = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-indigo-500">
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="block text-white hover:bg-indigo-600 px-4 py-2 text-lg transition-all duration-300"
           >
             Home
-          </a>
-          <a
-            href="#features"
+          </Link>
+          <Link
+            to="/features"
             className="block text-white hover:bg-indigo-600 px-4 py-2 text-lg transition-all duration-300"
           >
             Features
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            to="/about"
             className="block text-white hover:bg-indigo-600 px-4 py-2 text-lg transition-all duration-300"
           >
-            Contact
-          </a>
+            About
+          </Link>
           <a
-            href="#dashboard"
+            to="/dashboard"
             className="block text-white hover:bg-indigo-600 px-4 py-2 text-lg transition-all duration-300"
           >
             Dashboard

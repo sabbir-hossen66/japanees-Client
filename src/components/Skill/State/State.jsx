@@ -2,7 +2,7 @@ import React from "react";
 import { useCountUp } from "react-countup";
 
 const State = () => {
-  // Users CountUp
+
   const userRef = React.useRef(null);
   useCountUp({
     ref: userRef,
@@ -12,7 +12,7 @@ const State = () => {
     duration: 3,
   });
 
-  // Admin CountUp
+
   const adminRef = React.useRef(null);
   useCountUp({
     ref: adminRef,
@@ -22,7 +22,7 @@ const State = () => {
     duration: 3,
   });
 
-  // Owner CountUp
+
   const ownerRef = React.useRef(null);
   useCountUp({
     ref: ownerRef,
