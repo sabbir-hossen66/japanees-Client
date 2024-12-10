@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "aos": "^2.3.4",
+    "framer-motion": "^11.13.5",
     "heroicons": "^2.2.0",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
