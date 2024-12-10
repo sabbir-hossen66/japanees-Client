@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaFacebook, FaInstagram, FaLinkedin, FaSquareXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -21,38 +22,39 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="#home"
+                    href="#services"
                     className="hover:text-indigo-200 transition duration-300"
                   >
-                    Home
+                    Services
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#features"
+                    href="#support"
                     className="hover:text-indigo-200 transition duration-300"
                   >
-                    Features
+                    Support
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#contact"
+                    href="#privacy-policy"
                     className="hover:text-indigo-200 transition duration-300"
                   >
-                    Contact
+                    Privacy Policy
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#dashboard"
+                    href="#terms-of-service"
                     className="hover:text-indigo-200 transition duration-300"
                   >
-                    Dashboard
+                    Terms of Service
                   </a>
                 </li>
               </ul>
             </div>
+
 
             {/* Social Media Links */}
             <div className="w-full lg:w-1/3">
@@ -63,28 +65,28 @@ const Footer = () => {
                   className="hover:text-indigo-200 transition duration-300"
                   aria-label="Facebook"
                 >
-                  <i className="fab fa-facebook-f"></i>
+                  <FaFacebook />
                 </a>
                 <a
                   href="#"
                   className="hover:text-indigo-200 transition duration-300"
                   aria-label="Twitter"
                 >
-                  <i className="fab fa-twitter"></i>
+                  <FaSquareXTwitter />
                 </a>
                 <a
                   href="#"
                   className="hover:text-indigo-200 transition duration-300"
                   aria-label="Instagram"
                 >
-                  <i className="fab fa-instagram"></i>
+                  <FaInstagram />
                 </a>
                 <a
                   href="#"
                   className="hover:text-indigo-200 transition duration-300"
                   aria-label="LinkedIn"
                 >
-                  <i className="fab fa-linkedin-in"></i>
+                  <FaLinkedin />
                 </a>
               </div>
             </div>

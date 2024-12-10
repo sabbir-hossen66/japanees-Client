@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Root from "../Layout/Root";
 import ErrorPage from "../Shared/ErrorPage";
+import LandingPage from "../Pages/LandingPage/LandingPage";
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <div>hell</div>,
+        element: <LandingPage />,
       },
     ],
   },
