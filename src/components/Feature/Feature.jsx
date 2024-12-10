@@ -10,8 +10,8 @@ import 'aos/dist/aos.css';
 const Feature = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duration of the animation in milliseconds
-      once: true, // Animation should happen only once when the card comes into view
+      duration: 1000,
+      once: true,
     });
   }, []);
 
@@ -29,7 +29,7 @@ const Feature = () => {
                 boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              data-aos="fade-up" // AOS attribute for fade-up animation
+              data-aos="fade-up"
             >
               <div className="relative overflow-hidden">
                 {/* Image */}

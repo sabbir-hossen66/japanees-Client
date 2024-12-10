@@ -21,13 +21,13 @@ import 'aos/dist/aos.css';
 const Banner = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duration of the animation in milliseconds
-      once: true, // Whether animation should happen only once
+      duration: 1000,
+      once: true,
     });
   }, []);
 
   const handleSlideChange = () => {
-    AOS.refresh();  // Reinitialize AOS when slide changes
+    AOS.refresh();
   };
 
   return (
