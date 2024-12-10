@@ -28,12 +28,11 @@ const Feature = () => {
                   alt={card.title}
                   className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                {/* Animated Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-transparent to-gray-900 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                 {/* Overlay with Button */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center">
-                  {/* <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
-                    Learn More
-                  </button> */}
-                  <Button className='px-3' text={'demo'} />
+                <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <Button className=" bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300" text="Demo" />
                 </div>
               </div>
               {/* Card Content */}
