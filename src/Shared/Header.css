@@ -1,0 +1,19 @@
+.head-section {
+  border: none;
+  outline: none;
+  padding: 8px 8px;
+  cursor: pointer;
+
+}
+
+.active,
+.head-section::after {
+  color: #27A0F9;
+
+}
+
+.head-section:hover {
+  border-bottom: 3px solid #27A0F9;
+  /* font-size: larger; */
+
+}
