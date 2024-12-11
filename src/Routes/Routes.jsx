@@ -54,7 +54,8 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "lessons",
-        element: <Lessons />
+        element: <Lessons />,
+        loader: () => fetch('http://localhost:8000/lesson')
       },
       {
         path: "add-lessons",
