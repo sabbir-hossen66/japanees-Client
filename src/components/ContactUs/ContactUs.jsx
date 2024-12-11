@@ -30,17 +30,17 @@ const ContactUs = () => {
             data-aos="fade-right"
           >
             <div className="mb-6">
-              <FaPhoneAlt className="text-4xl text-yellow-400 mb-4" />
+              <FaPhoneAlt className="text-4xl text-purple-400 mb-4" />
               <h3 className="text-xl font-semibold">Call Us</h3>
               <p className="text-lg">+1 (555) 123-4567</p>
             </div>
             <div className="mb-6">
-              <FaEnvelope className="text-4xl text-yellow-400 mb-4" />
+              <FaEnvelope className="text-4xl text-purple-400 mb-4" />
               <h3 className="text-xl font-semibold">Email Us</h3>
               <p className="text-lg">contact@yourcompany.com</p>
             </div>
             <div>
-              <FaMapMarkerAlt className="text-4xl text-yellow-400 mb-4" />
+              <FaMapMarkerAlt className="text-4xl text-purple-400 mb-4" />
               <h3 className="text-xl font-semibold">Visit Us</h3>
               <p className="text-lg">123 Main Street, City, Country</p>
             </div>

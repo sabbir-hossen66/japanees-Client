@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate(); // useNavigate হুক ব্যবহার
 
-
-  const toggleLogin = () => setIsLoggedIn(!isLoggedIn);
+  const toggleLogin = () => {
+    if (!isLoggedIn) {
+      navigate('/login'); // লগইন না থাকলে '/login' এ রিডিরেক্ট
+    } else {
+      setIsLoggedIn(false); // লগইন থাকলে লগআউট
+    }
+  };
 
   return (
-
     <nav className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -39,29 +44,18 @@ const Header = () => {
               AboutUs
             </Link>
             <Link
-              to="#dashboard"
+              to="/dashboard"
               className="text-white hover:text-gray-300 text-lg transition-all duration-300"
             >
               Dashboard
             </Link>
             <div className="flex space-x-4">
-              {isLoggedIn ? (
-                // Show "Register" button if the user is logged in
-                <button
-                  onClick={toggleLogin}
-                  className="text-indigo-600 bg-white hover:bg-indigo-100 px-4 py-2 rounded-md transition-all duration-300"
-                >
-                  Register
-                </button>
-              ) : (
-                // Show "Login" button if the user is not logged in
-                <button
-                  onClick={toggleLogin}
-                  className="text-indigo-600 bg-white hover:bg-indigo-100 px-4 py-2 rounded-md transition-all duration-300"
-                >
-                  Login
-                </button>
-              )}
+              <button
+                onClick={toggleLogin}
+                className="text-indigo-600 bg-white hover:bg-indigo-100 px-4 py-2 rounded-md transition-all duration-300"
+              >
+                {isLoggedIn ? 'Register' : 'Login'}
+              </button>
             </div>
           </div>
 
@@ -128,35 +122,25 @@ const Header = () => {
           >
             About
           </Link>
-          <a
+
+          <Link
             to="/dashboard"
             className="block text-white hover:bg-indigo-600 px-4 py-2 text-lg transition-all duration-300"
           >
             Dashboard
-          </a>
+          </Link>
           <div className="flex space-x-4">
-            {isLoggedIn ? (
-              // Show "Register" button if the user is logged in
-              <button
-                onClick={toggleLogin}
-                className="text-indigo-600 bg-white hover:bg-indigo-100 px-4 py-2 rounded-md transition-all duration-300"
-              >
-                Register
-              </button>
-            ) : (
-              // Show "Login" button if the user is not logged in
-              <button
-                onClick={toggleLogin}
-                className="text-indigo-600 bg-white hover:bg-indigo-100 px-4 py-2 rounded-md transition-all duration-300"
-              >
-                Login
-              </button>
-            )}
+            <button
+              onClick={toggleLogin}
+              className="text-indigo-600 bg-white hover:bg-indigo-100 px-4 py-2 rounded-md transition-all duration-300"
+            >
+              {isLoggedIn ? 'Register' : 'Login'}
+            </button>
           </div>
         </div>
       )}
     </nav>
-
   );
 };
+
 export default Header;

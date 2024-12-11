@@ -45,7 +45,7 @@ const Banner = () => {
             disableOnInteraction: true,
           }}
           modules={[Scrollbar, Autoplay, Navigation, Pagination]}
-          className="mySwiper"
+          className="mySwiper mt-9"
           onSlideChange={handleSlideChange}
         >
           <SwiperSlide>

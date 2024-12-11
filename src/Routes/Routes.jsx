@@ -5,6 +5,9 @@ import Root from "../Layout/Root";
 import ErrorPage from "../Shared/ErrorPage";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import DashboardContent from "../Layout/DashboardContent";
+import Create from "../Pages/Dashboard/Create";
+import Login from "../Pages/Login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +22,21 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUs />
+      },
+      {
+        path: "/login",
+        element: <Login />
       }
     ],
   },
+  {
+    path: "dashboard",
+    element: <DashboardContent />,
+    children: [
+      {
+        path: "create",
+        element: <Create />
+      }
+    ]
+  }
 ]);
