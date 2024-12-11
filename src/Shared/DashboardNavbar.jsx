@@ -3,6 +3,8 @@ import { CgProfile } from 'react-icons/cg';
 import { FaUser } from 'react-icons/fa';
 import { IoIosCreate, IoMdSettings } from 'react-icons/io';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { RiAdminFill } from 'react-icons/ri';
+import { MdOutlineLibraryBooks, MdOutlineGroup, MdManageAccounts } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const DashboardNavbar = () => {
@@ -13,24 +15,27 @@ const DashboardNavbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const commonLinks = (
-    <>
-      <Link to="/" className="flex items-center space-x-2">
-        <FaUser className="h-5 w-5" />
-        <span>Home</span>
-      </Link>
-      <Link to="/profile" className="flex items-center space-x-2">
-        <CgProfile className="h-5 w-5" />
-        <span>Profile</span>
-      </Link>
-    </>
-  );
-
   const adminLinks = (
     <>
-      <Link to="/dashboard/create" className="flex items-center space-x-2">
+      <Link to="/dashboard/lessons" className="flex items-center space-x-2">
+        <MdOutlineLibraryBooks className="h-5 w-5" />
+        <span>Lessons</span>
+      </Link>
+      <Link to="/dashboard/add-lessons" className="flex items-center space-x-2">
         <IoIosCreate className="h-5 w-5" />
-        <span>Create</span>
+        <span>Add Lessons</span>
+      </Link>
+      <Link to="/dashboard/add-vocabularies" className="flex items-center space-x-2">
+        <MdOutlineLibraryBooks className="h-5 w-5" />
+        <span>Add Vocabularies</span>
+      </Link>
+      <Link to="/dashboard/manage-users" className="flex items-center space-x-2">
+        <MdOutlineGroup className="h-5 w-5" />
+        <span>Manage Users</span>
+      </Link>
+      <Link to="/dashboard/vocabulary-management" className="flex items-center space-x-2">
+        <MdManageAccounts className="h-5 w-5" />
+        <span>Vocabulary Management</span>
       </Link>
     </>
   );
@@ -44,6 +49,19 @@ const DashboardNavbar = () => {
       <Link to="/settings" className="flex items-center space-x-2">
         <IoMdSettings className="h-5 w-5" />
         <span>Settings</span>
+      </Link>
+    </>
+  );
+
+  const commonLinks = (
+    <>
+      <Link to="/" className="flex items-center space-x-2">
+        <FaUser className="h-5 w-5" />
+        <span>Home</span>
+      </Link>
+      <Link to="/profile" className="flex items-center space-x-2">
+        <CgProfile className="h-5 w-5" />
+        <span>Profile</span>
       </Link>
     </>
   );
@@ -64,15 +82,27 @@ const DashboardNavbar = () => {
           <div>
             {/* Desktop Menu */}
             <div className="space-y-4 hidden lg:block">
-              {commonLinks}
+              {/* Admin/User Links */}
               {isAdmin ? adminLinks : userLinks}
+
+              {/* Divider */}
+              <hr className="border-gray-500 my-2" />
+
+              {/* Common Links */}
+              {commonLinks}
             </div>
 
             {/* Mobile Menu */}
             <div className={`lg:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
               <div className="space-y-4 py-4">
-                {commonLinks}
+                {/* Admin/User Links */}
                 {isAdmin ? adminLinks : userLinks}
+
+                {/* Divider */}
+                <hr className="border-gray-500 my-2" />
+
+                {/* Common Links */}
+                {commonLinks}
               </div>
             </div>
           </div>
