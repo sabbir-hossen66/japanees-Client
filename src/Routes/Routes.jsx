@@ -6,12 +6,15 @@ import ErrorPage from "../Shared/ErrorPage";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import DashboardContent from "../Layout/DashboardContent";
-import Create from "../Pages/Dashboard/Create";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import Lessons from "../Pages/Lessons/Lessons";
+
 import PrivateRoute from "./PrivateRoute";
 import Tutorials from "../Pages/Tutorials/Tutorials";
+import AddLesons from "../Pages/AdminDashboardPages/AddLesons";
+import Lessons from "../Pages/AdminDashboardPages/Lessons";
+import AddVocabulary from "../Pages/AdminDashboardPages/AddVocabulary";
+import ManageUsers from "../Pages/AdminDashboardPages/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -35,10 +38,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />
       },
-      {
-        path: "/lesson",
-        element: <PrivateRoute> <Lessons /></PrivateRoute>
-      },
+      // {
+      //   path: "/lesson",
+      //   element: <PrivateRoute> <Lessons /></PrivateRoute>
+      // },
       {
         path: "/tutorial",
         element: <PrivateRoute><Tutorials /></PrivateRoute>
@@ -50,8 +53,20 @@ export const router = createBrowserRouter([
     element: <DashboardContent />,
     children: [
       {
-        path: "create",
-        element: <Create />
+        path: "lessons",
+        element: <Lessons />
+      },
+      {
+        path: "add-lessons",
+        element: <AddLesons />
+      },
+      {
+        path: "add-vocabularies",
+        element: <AddVocabulary />
+      },
+      {
+        path: "manage-users",
+        element: <ManageUsers />
       }
     ]
   }
