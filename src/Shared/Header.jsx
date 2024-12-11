@@ -101,20 +101,21 @@ const Header = () => {
               <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
                 <li className="list-none head-section hover:animate-pulse"><NavLink to={'/'}><span className="px-2 py-2 mx-3 mt-2">Home</span></NavLink></li>
                 <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/about'}><span className="px-2 py-2 mx-3 mt-2">About</span></NavLink></li>
+                <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/lesson'}><span className="px-2 py-2 mx-3 mt-2">Lessons</span></NavLink></li>
 
                 {
                   user ?
                     <>
 
-                      <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/lesson'}><span className="px-2 py-2 mx-3 mt-2">Lessons</span></NavLink></li>
-                      <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/tutorail'}><span className="px-2 py-2 mx-3 mt-2">Tutorials</span></NavLink></li>
+
+                      <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/tutorial'}><span className="px-2 py-2 mx-3 mt-2">Tutorials</span></NavLink></li>
 
                       {
                         user && //  isAdmin &&             bosabo ek somoy
                         <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/dashboard'}><span className="px-2 py-2 mx-3 mt-2">DashBoard</span></NavLink></li>
                       }
 
-                      <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/lesson'}><span className="px-2 py-2 mx-3 mt-2">Lessons</span></NavLink></li>
+
                       {/* <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/add-lesson'}><span className="px-2 py-2 mx-3 mt-2">AddLessons</span></NavLink></li>
                       <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/add-voca'}><span className="px-2 py-2 mx-3 mt-2">AddVocabularies</span></NavLink></li>
                       <li className="list-none head-section hover:animate-pulse"> <NavLink to={'/manage-user'}><span className="px-2 py-2 mx-3 mt-2">Manage Users</span></NavLink></li>

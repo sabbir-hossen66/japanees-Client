@@ -45,3 +45,17 @@ export const stats = [
   { label: "Assets under holding", value: "$119 trillion" },
   { label: "New users annually", value: "46,000" },
 ];
+
+export
+  const tutorials = [
+    { title: "Introduction to Japanese", url: "https://www.youtube.com/watch?v=example1", thumbnail: "https://i.ibb.co.com/WyT9G21/pexels-jibarofoto-1771218.jpg" },
+    { title: "Japanese Alphabet: Hiragana", url: "https://www.youtube.com/watch?v=example2", thumbnail: "https://i.ibb.co.com/850mXyb/pexels-kevin-malik-9017748.jpg" },
+    { title: "Japanese Alphabet: Katakana", url: "https://www.youtube.com/watch?v=example3", thumbnail: "https://i.ibb.co.com/d5ZtbM5/pexels-mikhail-nilov-6981085.jpg" },
+    { title: "Japanese Grammar Basics", url: "https://www.youtube.com/watch?v=example4", thumbnail: "https://i.ibb.co.com/GFdNDb4/pexels-mikhail-nilov-6981110.jpg" },
+    { title: "Essential Japanese Phrases", url: "https://www.youtube.com/watch?v=example5", thumbnail: "https://i.ibb.co.com/mNqRmJm/pexels-ron-lach-8036326.jpg" },
+    { title: "Learn Japanese Numbers", url: "https://www.youtube.com/watch?v=example6", thumbnail: "https://i.ibb.co.com/mXcwbM5/video-content.png" },
+    { title: "Japanese Pronunciation Guide", url: "https://www.youtube.com/watch?v=example7", thumbnail: "https://i.ibb.co.com/mNqRmJm/pexels-ron-lach-8036326.jpg" },
+    { title: "Conversational Japanese", url: "https://www.youtube.com/watch?v=example8", thumbnail: "https://i.ibb.co.com/mNqRmJm/pexels-ron-lach-8036326.jpg" },
+    { title: "Japanese Culture Insights", url: "https://www.youtube.com/watch?v=example9", thumbnail: "https://i.ibb.co.com/mXcwbM5/video-content.png" },
+    { title: "Advanced Japanese Vocabulary", url: "https://www.youtube.com/watch?v=example10", thumbnail: "https://i.ibb.co.com/pZfDVrM/pexels-tima-miroshnichenko-5427870.jpg" },
+  ];

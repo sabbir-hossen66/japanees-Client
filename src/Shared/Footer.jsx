@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaSquareXTwitter } from 'react-ico
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-8">
+      <footer className="bg-gray-400 text-gray-800  py-8">
         <div className="container mx-auto px-4">
           {/* Top Section */}
           <div className="flex flex-wrap justify-between items-center text-center lg:text-left">
@@ -23,7 +23,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#services"
-                    className="hover:text-indigo-200 transition duration-300"
+                    className="hover:text-indigo-400 transition duration-300"
                   >
                     Services
                   </a>
@@ -31,7 +31,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#support"
-                    className="hover:text-indigo-200 transition duration-300"
+                    className="hover:text-gray-700 transition duration-300"
                   >
                     Support
                   </a>
@@ -39,7 +39,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#privacy-policy"
-                    className="hover:text-indigo-200 transition duration-300"
+                    className="hover:text-gray-700 transition duration-300"
                   >
                     Privacy Policy
                   </a>
@@ -47,7 +47,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#terms-of-service"
-                    className="hover:text-indigo-200 transition duration-300"
+                    className="hover:text-gray-700 transition duration-300"
                   >
                     Terms of Service
                   </a>
@@ -62,28 +62,28 @@ const Footer = () => {
               <div className="flex justify-center lg:justify-start space-x-4">
                 <a
                   href="#"
-                  className="hover:text-indigo-200 transition duration-300"
+                  className="hover:text-purple-700 transition duration-300"
                   aria-label="Facebook"
                 >
                   <FaFacebook />
                 </a>
                 <a
                   href="#"
-                  className="hover:text-indigo-200 transition duration-300"
+                  className="hover:text-purple-700 transition duration-300"
                   aria-label="Twitter"
                 >
                   <FaSquareXTwitter />
                 </a>
                 <a
                   href="#"
-                  className="hover:text-indigo-200 transition duration-300"
+                  className="hover:text-purple-700 transition duration-300"
                   aria-label="Instagram"
                 >
                   <FaInstagram />
                 </a>
                 <a
                   href="#"
-                  className="hover:text-indigo-200 transition duration-300"
+                  className="hover:text-purple-400 transition duration-300"
                   aria-label="LinkedIn"
                 >
                   <FaLinkedin />

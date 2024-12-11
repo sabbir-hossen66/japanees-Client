@@ -10,6 +10,8 @@ import Create from "../Pages/Dashboard/Create";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Lessons from "../Pages/Lessons/Lessons";
+import PrivateRoute from "./PrivateRoute";
+import Tutorials from "../Pages/Tutorials/Tutorials";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +37,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/lesson",
-        element: <Lessons />
+        element: <PrivateRoute> <Lessons /></PrivateRoute>
+      },
+      {
+        path: "/tutorial",
+        element: <PrivateRoute><Tutorials /></PrivateRoute>
       }
     ],
   },
