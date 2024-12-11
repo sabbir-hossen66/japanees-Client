@@ -1,36 +1,57 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Lessons = () => {
   const lessons = useLoaderData();
+  const navigate = useNavigate();
 
-  const handleEdit = (lesson) => {
-    Swal.fire({
+  const handleEdit = async (lesson) => {
+    const { value: formData } = await Swal.fire({
       title: 'Edit Lesson',
-      html: `<input id="lessonName" class="swal2-input" placeholder="Lesson Name" value="${lesson.lessonName}" />
-             <input id="lessonNumber" class="swal2-input" placeholder="Lesson Number" value="${lesson.lessonNumber}" />`,
+      html: `
+        <input id="lessonName" class="swal2-input" placeholder="Lesson Name" value="${lesson.lessonName}" />
+        <input id="lessonNumber" class="swal2-input" placeholder="Lesson Number" value="${lesson.lessonNumber}" />
+      `,
       confirmButtonText: 'Save',
       showCancelButton: true,
       focusConfirm: false,
-      preConfirm: () => {
+      prevalidate: () => {
         const lessonName = document.getElementById('lessonName').value;
         const lessonNumber = document.getElementById('lessonNumber').value;
         if (!lessonName || !lessonNumber) {
-          Swal.showValidationMessage('Both fields are required');
-        } else {
-          return { lessonName, lessonNumber };
+          return 'Both fields are required';
         }
       },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log('Updated Lesson:', { ...lesson, ...result.value });
-        Swal.fire('Saved!', 'The lesson has been updated.', 'success');
-      }
     });
+
+    if (formData) {
+      try {
+        const response = await fetch(`http://localhost:8000/lesson/${lesson._id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to update lesson');
+        }
+
+        const updatedLesson = await response.json();
+        console.log('Updated Lesson:', updatedLesson);
+        Swal.fire('Saved!', 'The lesson has been updated.', 'success');
+
+        // Update UI with updated lesson data
+        const updatedLessons = lessons.map((l) => (l._id === updatedLesson._id ? updatedLesson : l));
+        navigate('/lessons'); // Refresh `/lessons` route to reflect updated data
+      } catch (error) {
+        console.error(error);
+        Swal.fire('Error!', 'An error occurred while updating the lesson.', 'error');
+      }
+    }
   };
 
-  const handleDelete = (lessonId) => {
+  const handleDelete = async (lessonId) => {
     Swal.fire({
       title: 'Are you sure?',
       text: 'This action cannot be undone.',
@@ -39,10 +60,32 @@ const Lessons = () => {
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        console.log('Deleted Lesson ID:', lessonId);
-        Swal.fire('Deleted!', 'The lesson has been removed.', 'success');
+        try {
+          const response = await fetch(`http://localhost:8000/lesson/${lessonId}`, {
+            method: 'DELETE'
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to delete lesson');
+          }
+
+          const data = await response.json();
+          if (data.deletedCount > 0) {
+            console.log('Deleted Lesson ID:', lessonId);
+            Swal.fire('Deleted!', 'The lesson has been removed.', 'success');
+
+            // Update UI to remove deleted lesson
+            const filteredLessons = lessons.filter((l) => l._id !== lessonId);
+            navigate('/dashboard/lessons', { state: { filteredLessons } }); // Refresh `/lessons` with filtered data
+          } else {
+            Swal.fire('Error!', 'An error occurred while deleting the lesson.', 'error');
+          }
+        } catch (error) {
+          console.error(error);
+          Swal.fire('Error!', 'An error occurred while deleting the lesson.', 'error');
+        }
       }
     });
   };
