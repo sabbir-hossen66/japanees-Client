@@ -11,13 +11,33 @@ const AddLessons = () => {
 
     if (lessonName.trim() && lessonNumber.trim()) {
       console.log({ lessonName, lessonNumber });
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: ` "${lessonName}" ${lessonNumber} has been submitted.`,
-        showConfirmButton: false,
-        timer: 1500
-      });
+      // send data to the server
+      fetch('http://localhost:8000/lesson', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          lessonName: lessonName,
+          lessonNumber: lessonNumber,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          if (data.insertedId) {
+
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: ` "${lessonName}" ${lessonNumber} has been submitted.`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+
+          }
+        })
+
 
 
       // Reset form fields
