@@ -3,12 +3,11 @@ import { CgProfile } from 'react-icons/cg';
 import { FaUser } from 'react-icons/fa';
 import { IoIosCreate, IoMdSettings } from 'react-icons/io';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { RiAdminFill } from 'react-icons/ri';
 import { MdOutlineLibraryBooks, MdOutlineGroup, MdManageAccounts } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const DashboardNavbar = () => {
-  const isAdmin = true; // Set this dynamically based on user role
+  const isAdmin = true; // Dynamically set this based on user role
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -82,26 +81,26 @@ const DashboardNavbar = () => {
           <div>
             {/* Desktop Menu */}
             <div className="space-y-4 hidden lg:block">
-              {/* Admin/User Links */}
+              {/* Display Dashboard type */}
+              <div className="font-bold text-xl mb-4">
+                {isAdmin ? 'AdminDashboard' : 'UserDashboard'}
+              </div>
+
               {isAdmin ? adminLinks : userLinks}
-
-              {/* Divider */}
               <hr className="border-gray-500 my-2" />
-
-              {/* Common Links */}
               {commonLinks}
             </div>
 
             {/* Mobile Menu */}
             <div className={`lg:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-              <div className="space-y-4 py-4">
-                {/* Admin/User Links */}
+              <div className="space-y-4">
+                {/* Display Dashboard type */}
+                <div className="font-bold text-xl mb-4">
+                  {isAdmin ? 'AdminDashboard' : 'UserDashboard'}
+                </div>
+
                 {isAdmin ? adminLinks : userLinks}
-
-                {/* Divider */}
                 <hr className="border-gray-500 my-2" />
-
-                {/* Common Links */}
                 {commonLinks}
               </div>
             </div>
