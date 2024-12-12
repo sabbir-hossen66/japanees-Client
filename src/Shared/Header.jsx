@@ -23,6 +23,7 @@ const Header = () => {
 
   const { user, logOut } = useContext(AuthContext)
 
+
   // const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {

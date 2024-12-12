@@ -59,3 +59,5 @@ export
     { title: "Japanese Culture Insights", url: "https://www.youtube.com/watch?v=example9", thumbnail: "https://i.ibb.co.com/mXcwbM5/video-content.png" },
     { title: "Advanced Japanese Vocabulary", url: "https://www.youtube.com/watch?v=example10", thumbnail: "https://i.ibb.co.com/pZfDVrM/pexels-tima-miroshnichenko-5427870.jpg" },
   ];
+
+

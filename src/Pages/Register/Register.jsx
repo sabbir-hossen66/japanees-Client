@@ -8,8 +8,10 @@ import { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../Providers/AuthProviders';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic()
   const { createUser, updatePRf } = useContext(AuthContext)
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
@@ -29,14 +31,27 @@ const Register = () => {
         updatePRf(data.name, data.photoURL)
           .then(() => {
             console.log('user profile updated');
-            reset();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Successfully Sign UP",
-              showConfirmButton: false,
-              timer: 1500
-            });
+            // use axiospublic
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+              url: data.photoURL
+            }
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully Sign UP",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }
+              })
+
+
           })
         navigate('/login')
       })
