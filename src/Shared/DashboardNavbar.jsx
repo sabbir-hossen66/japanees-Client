@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { FaUser } from 'react-icons/fa';
-import { IoIosCreate, IoMdSettings } from 'react-icons/io';
+import { IoIosCreate } from 'react-icons/io';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { MdOutlineLibraryBooks, MdOutlineGroup, MdManageAccounts } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
+import { FaLink } from 'react-icons/fa6';
+import { TbVocabulary } from "react-icons/tb";
 
 const DashboardNavbar = () => {
   const [isAdmin] = useAdmin()
@@ -42,13 +44,17 @@ const DashboardNavbar = () => {
 
   const userLinks = (
     <>
-      <Link to="/stats" className="flex items-center space-x-2">
+      <Link to="/dashboard/lessons" className="flex items-center space-x-2">
         <IoIosCreate className="h-5 w-5" />
-        <span>Stats</span>
+        <span>Lessons</span>
       </Link>
-      <Link to="/dashboard/profile" className="flex items-center space-x-2">
-        <IoMdSettings className="h-5 w-5" />
-        <span>Settings</span>
+      <Link to="/tutorial" className="flex items-center space-x-2">
+        <FaLink className="h-5 w-5" />
+        <span>Tutorial</span>
+      </Link>
+      <Link to="/dashboard/manage-voca" className="flex items-center space-x-2">
+        <TbVocabulary className="h-5 w-5" />
+        <span>Vocabulary</span>
       </Link>
     </>
   );

@@ -57,11 +57,11 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <DashboardContent />,
     children: [
-      // {
-      //   index: true,
-      //   element: <Lessons />,
-      //   loader: () => fetch('https://japanes-language-server.vercel.app/lesson')
-      // },
+      {
+        index: true,
+        element: <Lessons />,
+        loader: () => fetch('https://japanes-language-server.vercel.app/lesson')
+      },
       {
         path: "lessons",
         element: <Lessons />,

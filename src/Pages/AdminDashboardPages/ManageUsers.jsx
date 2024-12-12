@@ -127,11 +127,11 @@ const ManageUsers = () => {
                   )}
                 </td>
                 <td className="px-4 py-2">
-                  <button
+                  {/* <button
                     className="bg-blue-500 text-white px-3 py-2 rounded-lg shadow hover:bg-blue-600 hover:scale-105 transform transition-transform duration-300"
                   >
                     Edit
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => handleDelete(user._id)}
                     className="bg-red-500 text-white px-3 py-2 rounded-lg shadow ml-2 hover:bg-red-600 hover:scale-105 transform transition-transform duration-300"

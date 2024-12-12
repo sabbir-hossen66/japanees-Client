@@ -1,64 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Lessons = () => {
-  const lessons = useLoaderData();
+  const initialLessons = useLoaderData(); // Initial data loaded via React Router loader
+  const [lessons, setLessons] = useState(initialLessons);
   const navigate = useNavigate();
+
+  // Function to fetch updated data
+  const fetchLessons = async () => {
+    try {
+      const response = await fetch('https://japanes-language-server.vercel.app/lesson'); // Update this URL as per your endpoint
+      const data = await response.json();
+      setLessons(data);
+    } catch (error) {
+      console.error('Failed to fetch lessons:', error);
+    }
+  };
 
   const handleEdit = async (lesson) => {
     const { value: formData } = await Swal.fire({
       title: 'Edit Lesson',
       html: `
-        <input id="lessonName" class="swal2-input" placeholder="Lesson Name" value="${lesson.lessonName}" />
-        <input id="lessonNumber" class="swal2-input" placeholder="Lesson Number" value="${lesson.lessonNumber}" />
-      `,
+      <input id="lessonName" class="swal2-input" placeholder="Lesson Name" value="${lesson.lessonName}" />
+      <input id="lessonNumber" class="swal2-input" placeholder="Lesson Number" value="${lesson.lessonNumber}" />
+    `,
       confirmButtonText: 'Save',
       showCancelButton: true,
       focusConfirm: false,
-      prevalidate: () => {
+      preConfirm: () => {
         const lessonName = document.getElementById('lessonName').value;
         const lessonNumber = document.getElementById('lessonNumber').value;
         if (!lessonName || !lessonNumber) {
-          return 'Both fields are required';
+          Swal.showValidationMessage('Both fields are required');
+          return null;
         }
+        return { lessonName, lessonNumber };
       },
     });
 
     if (formData) {
       try {
         const response = await fetch(`https://japanes-language-server.vercel.app/lesson/${lesson._id}`, {
-          method: 'PUT',
+          method: 'PATCH',
           headers: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
-        })
+        });
+        console.log(response);
 
         if (!response.ok) {
           throw new Error('Failed to update lesson');
         }
 
-
-        const updatedLesson = await response.json()
-          .then(res => res.json())
-          .then(data => {
-            if (data.modifiedCount > 0) {
-              Swal.fire('Saved!', 'The lesson has been updated.', 'success');
-            }
-          })
-        console.log('Updated Lesson:', updatedLesson);
-        // Swal.fire('Saved!', 'The lesson has been updated.', 'success');
-
-        // Update UI with updated lesson data
-        // const updatedLessons = lessons.map((l) => (l._id === updatedLesson._id ? updatedLesson : l));
-        // navigate('/dashboard/lessons'); // Refresh `/lessons` route to reflect updated data
+        fetchLessons();
+        Swal.fire('Saved!', 'The lesson has been updated.', 'success');
       } catch (error) {
         console.error(error);
         Swal.fire('Error!', 'An error occurred while updating the lesson.', 'error');
       }
     }
   };
+
 
   const handleDelete = async (lessonId) => {
     Swal.fire({
