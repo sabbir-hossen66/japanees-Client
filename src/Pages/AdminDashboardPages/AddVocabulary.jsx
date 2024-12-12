@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import Swal from 'sweetalert2'; // Import SweetAlert2
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const AddVocabulary = () => {
+  const { user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     word: '',
     pronunciation: '',
     whenToUse: '',
     lessonNo: '',
-    adminEmail: '', // You might want to fetch this from authentication or store it in local storage
+    adminEmail: user?.email || '', // You might want to fetch this from authentication or store it in local storage
   });
 
   const handleChange = (e) => {
@@ -20,8 +23,16 @@ const AddVocabulary = () => {
     try {
       const response = await axios.post('http://localhost:8000/create-vocabulary', formData); // Replace with your backend API endpoint
       console.log(response.data);
-      // Handle success, e.g., show a success message or redirect to a different page
-      alert('Vocabulary created successfully!');
+
+      // Handle success using SweetAlert2
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: `"${formData.lessonNo}" - "${formData.word}" has been submitted successfully!`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+
       setFormData({
         word: '',
         pronunciation: '',
@@ -31,10 +42,16 @@ const AddVocabulary = () => {
       });
     } catch (error) {
       console.error('Error creating vocabulary:', error);
-      // Handle error, e.g., show an error message to the user
-      alert('Error creating vocabulary. Please try again.');
+
+      // Handle error using SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An error occurred while creating vocabulary. Please try again.',
+      });
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div className="mb-4">
