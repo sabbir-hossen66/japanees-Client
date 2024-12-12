@@ -1,16 +1,19 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../hooks/useAxiosPublic';
+// import useAxiosPublic from '../../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
 const ManageUsers = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   // Fetch users
   const { data: users = [], isLoading, refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await axiosPublic.get('/users');
+      const res = await axiosSecure.get('/users');
       return res.data;
     },
   });
@@ -28,7 +31,7 @@ const ManageUsers = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axiosPublic.patch(`/users/admin/${id}`);
+          await axiosSecure.patch(`/users/admin/${id}`);
           Swal.fire({
             icon: 'success',
             title: 'User promoted to admin successfully',
@@ -61,7 +64,7 @@ const ManageUsers = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axiosPublic.delete(`/users/${id}`);
+          await axiosSecure.delete(`/users/${id}`);
           Swal.fire({
             icon: 'success',
             title: 'User deleted successfully',
@@ -82,7 +85,7 @@ const ManageUsers = () => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />
   }
 
   return (
@@ -100,7 +103,7 @@ const ManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users?.map((user) => (
               <tr key={user._id} className="text-center border-b hover:bg-gray-100">
                 <td className="px-4 py-2">
                   <img

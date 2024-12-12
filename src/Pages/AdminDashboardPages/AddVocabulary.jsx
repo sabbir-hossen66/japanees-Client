@@ -21,7 +21,7 @@ const AddVocabulary = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/create-vocabulary', formData); // Replace with your backend API endpoint
+      const response = await axios.post('https://japanes-language-server.vercel.app/create-vocabulary', formData); // Replace with your backend API endpoint
       console.log(response.data);
 
       // Handle success using SweetAlert2

@@ -20,7 +20,7 @@ const Feature = () => {
       <Title subtitle={'特徴的なセクション'} title={'Discover the unique features of our services'} />
       <div className="py-12 px-4 md:px-8 lg:px-16">
         <div className="flex flex-wrap gap-8 justify-center">
-          {cards.map((card, index) => (
+          {cards?.map((card, index) => (
             <motion.div
               key={index}
               className="relative w-full md:w-[45%] lg:w-[30%] bg-white rounded-lg shadow-lg overflow-hidden group"

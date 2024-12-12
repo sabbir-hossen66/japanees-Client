@@ -27,7 +27,7 @@ const Lessons = () => {
 
     if (formData) {
       try {
-        const response = await fetch(`http://localhost:8000/lesson/${lesson._id}`, {
+        const response = await fetch(`https://japanes-language-server.vercel.app/lesson/${lesson._id}`, {
           method: 'PUT',
           headers: {
             'content-type': 'application/json'
@@ -72,7 +72,7 @@ const Lessons = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:8000/lesson/${lessonId}`, {
+          const response = await fetch(`https://japanes-language-server.vercel.app/lesson/${lessonId}`, {
             method: 'DELETE'
           });
 
@@ -114,7 +114,7 @@ const Lessons = () => {
               </tr>
             </thead>
             <tbody>
-              {lessons.map((lesson, index) => (
+              {lessons?.map((lesson, index) => (
                 <tr
                   key={lesson._id}
                   className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}

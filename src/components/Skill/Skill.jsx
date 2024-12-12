@@ -32,7 +32,7 @@ const Skill = () => {
       <div className="container mx-auto">
         {/* Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
-          {paginatedItems.map((card, index) => (
+          {paginatedItems?.map((card, index) => (
             <div
               key={index}
               className="flex flex-col items-center bg-white shadow-md p-6 rounded-lg transition-transform duration-300 hover:scale-105 hover:shadow-lg"

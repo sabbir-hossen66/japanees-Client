@@ -174,7 +174,7 @@ export default function AboutUs() {
 
             <div className="lg:flex lg:flex-auto lg:justify-center mt-10 lg:mt-0 lg:ml-16">
               <dl className="space-y-10 xl:space-y-12 transform transition-transform hover:scale-105 duration-300">
-                {stats.map((stat) => (
+                {stats?.map((stat) => (
                   <div
                     key={stat.label}
                     className="flex flex-col-reverse gap-y-2"

@@ -24,7 +24,7 @@ const ManageVoca = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:8000/get-vocabulary/${id}`, {
+          const response = await fetch(`https://japanes-language-server.vercel.app/get-vocabulary/${id}`, {
             method: 'DELETE'
           });
 
@@ -50,7 +50,7 @@ const ManageVoca = () => {
       }
     });
   };
-  //http://localhost:8000/vocabulary/${id}
+  //https://japanes-language-server.vercel.app/vocabulary/${id}
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -66,7 +66,7 @@ const ManageVoca = () => {
           title: 'Saved!',
           text: 'Vocabulary item successfully edited.',
         });
-        const updatedVoca = voca.map((item) => (item._id === editedItem._id ? editedItem : item));
+        const updatedVoca = voca?.map((item) => (item._id === editedItem._id ? editedItem : item));
         setEditMode(false);
         setEditedItem({});
       } else {
@@ -101,7 +101,7 @@ const ManageVoca = () => {
           </tr>
         </thead>
         <tbody>
-          {voca.map((item, index) => (
+          {voca?.map((item, index) => (
             <tr key={index} className="border border-gray-300">
               <td className={`p-2 ${editMode && item._id === editedItem._id ? 'bg-gray-200' : ''}`}>
                 {editMode && item._id === editedItem._id ? (

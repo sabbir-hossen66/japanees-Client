@@ -5,9 +5,10 @@ import { IoIosCreate, IoMdSettings } from 'react-icons/io';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { MdOutlineLibraryBooks, MdOutlineGroup, MdManageAccounts } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardNavbar = () => {
-  const isAdmin = true; // Dynamically set this based on user role
+  const [isAdmin] = useAdmin()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -45,7 +46,7 @@ const DashboardNavbar = () => {
         <IoIosCreate className="h-5 w-5" />
         <span>Stats</span>
       </Link>
-      <Link to="/settings" className="flex items-center space-x-2">
+      <Link to="/dashboard/profile" className="flex items-center space-x-2">
         <IoMdSettings className="h-5 w-5" />
         <span>Settings</span>
       </Link>
@@ -58,7 +59,7 @@ const DashboardNavbar = () => {
         <FaUser className="h-5 w-5" />
         <span>Home</span>
       </Link>
-      <Link to="/profile" className="flex items-center space-x-2">
+      <Link to="/dashboard/profile" className="flex items-center space-x-2">
         <CgProfile className="h-5 w-5" />
         <span>Profile</span>
       </Link>

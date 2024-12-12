@@ -12,7 +12,7 @@ const AddLessons = () => {
     if (lessonName.trim() && lessonNumber.trim()) {
       console.log({ lessonName, lessonNumber });
       // send data to the server
-      fetch('http://localhost:8000/lesson', {
+      fetch('https://japanes-language-server.vercel.app/lesson', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

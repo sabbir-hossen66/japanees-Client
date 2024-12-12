@@ -16,6 +16,10 @@ import Lessons from "../Pages/AdminDashboardPages/Lessons";
 import AddVocabulary from "../Pages/AdminDashboardPages/AddVocabulary";
 import ManageUsers from "../Pages/AdminDashboardPages/ManageUsers";
 import ManageVoca from "../Pages/AdminDashboardPages/ManageVoca";
+import Learning from "../Pages/Learning/Learning";
+import Profile from "../Pages/CommonDashboard/Profile";
+import AdminRoute from "./AdminRoute";
+
 
 export const router = createBrowserRouter([
   {
@@ -39,10 +43,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />
       },
-      // {
-      //   path: "/lesson",
-      //   element: <PrivateRoute> <Lessons /></PrivateRoute>
-      // },
+      {
+        path: "/learning",
+        element: <PrivateRoute> <Learning /></PrivateRoute>
+      },
       {
         path: "/tutorial",
         element: <PrivateRoute><Tutorials /></PrivateRoute>
@@ -53,27 +57,36 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <DashboardContent />,
     children: [
+      // {
+      //   index: true,
+      //   element: <Lessons />,
+      //   loader: () => fetch('https://japanes-language-server.vercel.app/lesson')
+      // },
       {
         path: "lessons",
         element: <Lessons />,
-        loader: () => fetch('http://localhost:8000/lesson')
+        loader: () => fetch('https://japanes-language-server.vercel.app/lesson')
+      },
+      {
+        path: "profile",
+        element: <Profile />
       },
       {
         path: "add-lessons",
-        element: <AddLesons />
+        element: <AdminRoute> <AddLesons /></AdminRoute>
       },
       {
         path: "add-vocabularies",
-        element: <AddVocabulary />
+        element: <AdminRoute> <AddVocabulary /></AdminRoute>
       },
       {
         path: "manage-users",
-        element: <ManageUsers />
+        element: <AdminRoute><ManageUsers /></AdminRoute>
       },
       {
         path: "manage-voca",
         element: <ManageVoca />,
-        loader: () => fetch('http://localhost:8000/get-vocabulary')
+        loader: () => fetch('https://japanes-language-server.vercel.app/get-vocabulary')
       }
     ]
   }
