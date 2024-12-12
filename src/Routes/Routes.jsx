@@ -15,6 +15,7 @@ import AddLesons from "../Pages/AdminDashboardPages/AddLesons";
 import Lessons from "../Pages/AdminDashboardPages/Lessons";
 import AddVocabulary from "../Pages/AdminDashboardPages/AddVocabulary";
 import ManageUsers from "../Pages/AdminDashboardPages/ManageUsers";
+import ManageVoca from "../Pages/AdminDashboardPages/ManageVoca";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,11 @@ export const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />
+      },
+      {
+        path: "manage-voca",
+        element: <ManageVoca />,
+        loader: () => fetch('http://localhost:8000/get-vocabulary')
       }
     ]
   }

@@ -29,21 +29,30 @@ const Lessons = () => {
       try {
         const response = await fetch(`http://localhost:8000/lesson/${lesson._id}`, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'content-type': 'application/json'
+          },
           body: JSON.stringify(formData),
-        });
+        })
 
         if (!response.ok) {
           throw new Error('Failed to update lesson');
         }
 
-        const updatedLesson = await response.json();
+
+        const updatedLesson = await response.json()
+          .then(res => res.json())
+          .then(data => {
+            if (data.modifiedCount > 0) {
+              Swal.fire('Saved!', 'The lesson has been updated.', 'success');
+            }
+          })
         console.log('Updated Lesson:', updatedLesson);
-        Swal.fire('Saved!', 'The lesson has been updated.', 'success');
+        // Swal.fire('Saved!', 'The lesson has been updated.', 'success');
 
         // Update UI with updated lesson data
-        const updatedLessons = lessons.map((l) => (l._id === updatedLesson._id ? updatedLesson : l));
-        navigate('/lessons'); // Refresh `/lessons` route to reflect updated data
+        // const updatedLessons = lessons.map((l) => (l._id === updatedLesson._id ? updatedLesson : l));
+        // navigate('/dashboard/lessons'); // Refresh `/lessons` route to reflect updated data
       } catch (error) {
         console.error(error);
         Swal.fire('Error!', 'An error occurred while updating the lesson.', 'error');

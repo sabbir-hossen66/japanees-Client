@@ -32,7 +32,7 @@ const DashboardNavbar = () => {
         <MdOutlineGroup className="h-5 w-5" />
         <span>Manage Users</span>
       </Link>
-      <Link to="/dashboard/vocabulary-management" className="flex items-center space-x-2">
+      <Link to="/dashboard/manage-voca" className="flex items-center space-x-2">
         <MdManageAccounts className="h-5 w-5" />
         <span>Vocabulary Management</span>
       </Link>
