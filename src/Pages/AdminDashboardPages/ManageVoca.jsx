@@ -38,8 +38,8 @@ const ManageVoca = () => {
             Swal.fire('Deleted!', 'The vocabulary item has been removed.', 'success');
 
             // Update UI to remove deleted vocabulary item (assuming voca is the data array)
-            // const filteredVoca = voca.filter((item) => item._id !== id);
-            // navigate('/manage-voca', { state: { filteredVoca } }); // Refresh `/manage-voca` with filtered data
+            const filteredVoca = voca.filter((item) => item._id !== id);
+            navigate('/dashboard/manage-voca', { state: { filteredVoca } }); // Refresh `/manage-voca` with filtered data
           } else {
             Swal.fire('Error!', 'An error occurred while deleting the vocabulary item.', 'error');
           }
