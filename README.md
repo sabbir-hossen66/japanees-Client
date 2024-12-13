@@ -29,7 +29,7 @@
 ## How to Run Locally
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone (https://github.com/sabbir-hossen66/japanees-Client.git)
    cd language-club
 Install dependencies:
 bash
@@ -39,7 +39,7 @@ Start the development server:
 bash
 Copy code
 npm start
-Open your browser and visit: http://localhost:3000
+Open your browser and visit: http://localhost:5173
 Future Enhancements
 Add more interactive learning tools, such as quizzes.
 Implement user authentication for more secure admin access.
